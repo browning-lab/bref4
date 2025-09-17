@@ -1,0 +1,28 @@
+#!/bin/bash
+#
+# The test VCF file (test.vcf.gz) is extracted from 1000 Genomes Project
+# high coverage chromosome 20 sequence data. The test VCF file is used
+# to illustrate bref4's compression, filtering, and decompression commands.
+# Bref4 compression does not reduce the size of the test VCF file due to the
+# limited number of samples and markers in the test VCF file.
+#
+if [ ! -f bref4.jar ]; then
+  echo
+  echo "Downloading bref4.jar"
+  wget https://faculty.washington.edu/browning/bref4.jar
+fi
+
+if [ ! -f test.vcf.gz ]; then
+    echo
+    echo "Downloading test.vcf.gz"
+    wget https://raw.githubusercontent.com/browning-lab/bref4/master/test/test.vcf.gz
+fi
+
+echo
+echo "Converting test.vcf.gz to bref4 format and saving as test.bref4"
+java -Xmx2g -jar bref4.jar in=test.vcf.gz out=test.bref4
+
+echo
+echo "Converting to VCF, and saving filtered data as output.test.vcf.gz"
+java -Xmx2g -jar bref4.jar in=test.bref4 out=output.test.vcf.gz
+
