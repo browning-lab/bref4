@@ -5,7 +5,7 @@ phased non-missing genotypes. This is an alpha release.  The bref4 general
 release will include additional command line options and capabilities.
 
 Version: 0.1 (alpha release) \
-Last updated: September 17, 2025
+Last updated: September 23, 2025
 
 ## Contents
 
