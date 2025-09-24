@@ -78,7 +78,9 @@ public class VcfOutput {
                     .toArray(UnsignedByteArray[]::new);
                 writeBytes(out, bytes, os);
             }
-            BGZIPOutputStream.writeEmptyBlock(os);
+            if (bgzip) {
+                BGZIPOutputStream.writeEmptyBlock(os);
+            }
         }
         catch (Throwable t) {
             Utilities.exit(t);
